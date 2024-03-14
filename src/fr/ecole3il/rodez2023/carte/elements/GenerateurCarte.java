@@ -5,7 +5,7 @@
  * 
  * @author proussille
  */
-package fr.ecole3il.rodez2023.carte.manipulateurs;
+package fr.ecole3il.rodez2023.carte.elements;
 
 import java.util.Random;
 
