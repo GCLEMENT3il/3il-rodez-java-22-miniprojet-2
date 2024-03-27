@@ -1,42 +1,71 @@
 package fr.ecole3il.rodez2023.carte.chemin.elements;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import fr.ecole3il.rodez2023.carte.elements.Case;
+
+import java.util.*;
+
 public class Graphe<E> {
-    private Map<Noeud<E>, List<Noeud<E>>> matriceAdjacence;
+    private List<Noeud<E>> noeuds;
+    private Map<Noeud<E>, Map<Noeud<E>, Double>> adjacence;
+
+    public int getPenalite(Noeud<E> noeud) {
+    if (noeud.getValeur() instanceof Case) {
+        Case caseValue = (Case) noeud.getValeur();
+        return caseValue.getTuile().getPenalite();
+    }
+    return 0;
+}
 
     public Graphe() {
-        matriceAdjacence = new HashMap<Noeud<E>, List<Noeud<E>>>();
+        this.noeuds = new ArrayList<>();
+        this.adjacence = new HashMap<>();
     }
 
     public void ajouterNoeud(Noeud<E> noeud) {
-        if (!matriceAdjacence.containsKey(noeud)) {
-            matriceAdjacence.put(noeud, new ArrayList<Noeud<E>>());
+        if (!noeuds.contains(noeud)) {
+            noeuds.add(noeud);
+            adjacence.put(noeud, new HashMap<>());
         }
     }
 
     public void ajouterArete(Noeud<E> depart, Noeud<E> arrivee, double cout) {
         ajouterNoeud(depart);
         ajouterNoeud(arrivee);
-        matriceAdjacence.get(depart).add(arrivee);
-        // Faire l'ajoutez pour stocker le coût de l'arête, par exemple dans une autre matrice ou une map.
+        adjacence.get(depart).put(arrivee, cout);
     }
 
     public double getCoutArete(Noeud<E> depart, Noeud<E> arrivee) {
-        return 0.0; //Remplacez par la écupérer du coût de l'arête.
+        return adjacence.get(depart).get(arrivee);
     }
 
     public List<Noeud<E>> getNoeuds() {
-        return new ArrayList<Noeud<E>>(matriceAdjacence.keySet());
+        return noeuds;
     }
 
     public List<Noeud<E>> getVoisins(Noeud<E> noeud) {
-        if (matriceAdjacence.containsKey(noeud)) {
-            return matriceAdjacence.get(noeud);
-        } else {
-            return new ArrayList<Noeud<E>>();
+        if (!adjacence.containsKey(noeud)) {
+            return Collections.emptyList();
+        }
+        return new ArrayList<>(adjacence.get(noeud).keySet());
+    }
+
+public Noeud<E> getNoeud(int nx, int ny) {
+    for (Noeud<E> noeud : noeuds) {
+        if (noeud.getValeur() instanceof Case) {
+            Case caseValue = (Case) noeud.getValeur();
+            if (caseValue.getX() == nx && caseValue.getY() == ny) {
+                return noeud;
+            }
         }
     }
+    return null;
+}
+
+ public Double getCout(Noeud<E> noeudCourant, Noeud<E> voisin) {
+    if (adjacence.containsKey(noeudCourant) && adjacence.get(noeudCourant).containsKey(voisin)) {
+        return adjacence.get(noeudCourant).get(voisin);
+    } else {
+        throw new IllegalArgumentException("No edge exists between the provided nodes.");
+    }
+}
 }

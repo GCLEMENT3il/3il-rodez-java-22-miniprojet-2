@@ -1,6 +1,9 @@
 package fr.ecole3il.rodez2023.carte.application;
 
+import fr.ecole3il.rodez2023.carte.AdaptateurAlgorithme;
+import fr.ecole3il.rodez2023.carte.chemin.algorithmes.AlgorithmeAEtoile;
 import fr.ecole3il.rodez2023.carte.chemin.algorithmes.AlgorithmeChemin;
+import fr.ecole3il.rodez2023.carte.chemin.algorithmes.AlgorithmeDijkstra;
 import fr.ecole3il.rodez2023.carte.elements.Carte;
 import fr.ecole3il.rodez2023.carte.elements.Case;
 import fr.ecole3il.rodez2023.carte.elements.Chemin;
@@ -11,6 +14,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 /**
@@ -107,7 +112,7 @@ public class CarteGUI extends JFrame {
 		}
 
 		if (caseDepart != null && caseArrivee != null) {
-			Chemin chemin = algorithme.trouverChemin(carte, caseDepart.getX(), caseDepart.getY(), caseArrivee.getX(),
+			Chemin chemin = (Chemin) AdaptateurAlgorithme.trouverChemin(algorithme, carte, caseDepart.getX(), caseDepart.getY(), caseArrivee.getX(),
 					caseArrivee.getY());
 			g.setColor(Color.RED);
 			for (Case c : chemin.getCases()) {
@@ -118,33 +123,31 @@ public class CarteGUI extends JFrame {
 
 	private void trouverChemin() {
 		if (caseDepart != null && caseArrivee != null) {
-			Chemin chemin = algorithme.trouverChemin(carte, caseDepart.getX(), caseDepart.getY(), caseArrivee.getX(),
-					caseArrivee.getY());
+			Chemin chemin = AdaptateurAlgorithme.trouverChemin(algorithme, carte, caseDepart.getX(), caseDepart.getY(), caseArrivee.getX(), caseArrivee.getY());
 			System.out.println("Chemin le plus court :");
 			for (Case c : chemin.getCases()) {
 				System.out.println("[" + c.getX() + ", " + c.getY() + "]");
 			}
 		}
 	}
-
 	private BufferedImage getTuileImage(Tuile tuile) {
 		// Bon, j'ai pas eu le temps de faire les images
 		// mais ça marche
 		BufferedImage image = new BufferedImage(32, 32, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = image.createGraphics();
 		switch (tuile) {
-		case DESERT:
-			g.setColor(Color.YELLOW);
-			break;
-		case MONTAGNES:
-			g.setColor(Color.GRAY);
-			break;
-		case PLAINE:
-			g.setColor(Color.GREEN);
-			break;
-		case FORET:
-			g.setColor(Color.DARK_GRAY);
-			break;
+			case DESERT:
+				g.setColor(Color.YELLOW);
+				break;
+			case MONTAGNES:
+				g.setColor(Color.GRAY);
+				break;
+			case PLAINE:
+				g.setColor(Color.GREEN);
+				break;
+			case FORET:
+				g.setColor(Color.DARK_GRAY);
+				break;
 		}
 		g.fillRect(0, 0, 32, 32);
 		g.dispose();

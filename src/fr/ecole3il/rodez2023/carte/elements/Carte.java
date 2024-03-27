@@ -41,4 +41,9 @@ public class Carte {
     public int getHauteur() {
         return tuiles[0].length;
     }
+
+ public Case getCase(int xDepart, int yDepart) {
+    Tuile tuile = getTuile(xDepart, yDepart);
+    return new Case(tuile, xDepart, yDepart);
+}
 }

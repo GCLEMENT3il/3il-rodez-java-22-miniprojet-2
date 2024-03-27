@@ -113,7 +113,7 @@ Ainsi, bien que notre projet se concentre sur une carte de tuiles en 2D, les pri
 
 ## Classes fournies
 
-- `fr.ecole3il.rodez2023.carte.elements.GenerateurCarte` :
+- `fr.ecole3il.rodez2023.carte.manipulateurs.GenerateurCarte` :
     Cette classe est responsable de la génération aléatoire de cartes. Elle contient des méthodes pour générer une carte avec des dimensions spécifiques ou avec des dimensions par défaut, ainsi que pour afficher une carte donnée. La méthode `main` permet de tester la génération et l'affichage d'une carte aléatoire.
 
 - `fr.ecole3il.rodez2023.carte.elements.Carte` :
