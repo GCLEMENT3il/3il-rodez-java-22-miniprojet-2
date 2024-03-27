@@ -2,6 +2,7 @@ package fr.ecole3il.rodez2023.carte.chemin.algorithmes;
 
 import fr.ecole3il.rodez2023.carte.chemin.elements.Graphe;
 import fr.ecole3il.rodez2023.carte.chemin.elements.Noeud;
+import fr.ecole3il.rodez2023.carte.elements.Case;
 import fr.ecole3il.rodez2023.carte.elements.Chemin;
 
 import java.util.*;
@@ -18,22 +19,24 @@ public class AlgorithmeDijkstra<E> implements AlgorithmeChemin<E> {
 
         // Étape 1: Initialisation des coûts et des prédécesseurs
         for (Noeud noeud : graphe.getNoeuds()) {
-            couts.put(noeud, Double.POSITIVE_INFINITY); // Coûts des autres nœuds mis à l'infini
+            couts.put(noeud, Double.MAX_VALUE); // Coûts des autres nœuds mis à Max Value
             predecesseurs.put(noeud, null); // Prédécesseur initialisé à null
-            filePriorite.offer(noeud); // Ajout du nœud à la file de priorité
         }
+        filePriorite.offer(depart); // Ajout du nœud de départ à la file de priorité
 
         couts.put(depart, 0.0);
 
         // Étape 2: Exploration des nœuds
         while (!filePriorite.isEmpty()) {
             Noeud<E> noeudCourant = filePriorite.poll(); // Récupération du nœud ayant le coût minimum
-            if (noeudCourant.equals(arrivee)) {
+            Case CaseCourant = (Case) noeudCourant.getValeur();
+            Case CaseArrivee = (Case) arrivee.getValeur();
+            if (CaseCourant.getX() == CaseArrivee.getX() && CaseCourant.getY() == CaseArrivee.getY()){
                 break; // Si on a atteint le nœud d'arrivée, on arrête
             }
 
             // Parcourir les voisins du nœud courant
-            for (Noeud<E> voisin : graphe.getVoisins(noeudCourant)) {
+            for (Noeud<E> voisin : noeudCourant.getVoisins()) {
                 double nouveauCout = couts.get(noeudCourant) + graphe.getCout(noeudCourant, voisin);
                 if (nouveauCout < couts.get(voisin)) {
                     couts.put(voisin, nouveauCout); // Mise à jour du coût

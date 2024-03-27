@@ -130,6 +130,9 @@ public class CarteGUI extends JFrame {
 			}
 		}
 	}
+
+
+	// Les images des tuiles (couleurs)
 	private BufferedImage getTuileImage(Tuile tuile) {
 		// Bon, j'ai pas eu le temps de faire les images
 		// mais ça marche
@@ -161,7 +164,7 @@ public class CarteGUI extends JFrame {
 		// J'ai mis ça en test
 		// Donc OKLM en commentaires
 		GenerateurCarte gen = new GenerateurCarte();
-		Carte carte = gen.genererCarte(10, 10);//new Carte(tuiles);
+		Carte carte = gen.genererCarte(100, 100); // Modification de la taille de la carte
 
 		// Créer et afficher l'interface graphique
 		SwingUtilities.invokeLater(() -> {

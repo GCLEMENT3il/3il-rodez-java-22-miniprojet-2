@@ -13,8 +13,8 @@ import fr.ecole3il.rodez2023.carte.elements.Carte;
 import fr.ecole3il.rodez2023.carte.elements.Tuile;
 
 public class GenerateurCarte {
-    private static final int LARGEUR_PAR_DEFAUT = 10; // Largeur par défaut de la carte
-    private static final int HAUTEUR_PAR_DEFAUT = 10; // Hauteur par défaut de la carte
+    private static final int LARGEUR_PAR_DEFAUT = 20; // Largeur par défaut de la carte
+    private static final int HAUTEUR_PAR_DEFAUT = 20; // Hauteur par défaut de la carte
     private static final Tuile[] TUILES = Tuile.values(); // Ensemble de tuiles disponibles
     private static final Random RANDOM = new Random(); // Générateur de nombres aléatoires
 
