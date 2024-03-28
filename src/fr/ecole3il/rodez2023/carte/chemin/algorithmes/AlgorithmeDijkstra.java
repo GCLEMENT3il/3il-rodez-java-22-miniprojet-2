@@ -7,9 +7,22 @@ import fr.ecole3il.rodez2023.carte.elements.Chemin;
 
 import java.util.*;
 
+/**
+ * La classe AlgorithmeDijkstra implémente l'interface AlgorithmeChemin.
+ * Elle utilise l'algorithme de Dijkstra pour trouver le chemin le plus court entre deux nœuds dans un graphe.
+ *
+ * @param <E> Le type d'élément contenu dans les nœuds du graphe.
+ */
 public class AlgorithmeDijkstra<E> implements AlgorithmeChemin<E> {
 
-    // Méthode principale pour trouver le chemin le plus court
+    /**
+     * Méthode principale pour trouver le chemin le plus court entre deux nœuds dans un graphe.
+     *
+     * @param graphe Le graphe dans lequel chercher le chemin.
+     * @param depart Le nœud de départ du chemin.
+     * @param arrivee Le nœud d'arrivée du chemin.
+     * @return Une liste de nœuds représentant le chemin du nœud de départ au nœud d'arrivée, ou null si aucun chemin n'est trouvé.
+     */
     @Override
     public List<Noeud<E>> trouverChemin(Graphe<E> graphe, Noeud<E> depart, Noeud<E> arrivee) {
         // Initialisation des structures de données

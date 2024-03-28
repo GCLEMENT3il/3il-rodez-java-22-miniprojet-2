@@ -5,7 +5,22 @@ import fr.ecole3il.rodez2023.carte.chemin.elements.Noeud;
 
 import java.util.*;
 
+/**
+ * La classe AlgorithmeAEtoile implémente l'interface AlgorithmeChemin.
+ * Elle utilise l'algorithme A* pour trouver le chemin le plus court entre deux nœuds dans un graphe.
+ *
+ * @param <E> Le type d'élément contenu dans les nœuds du graphe.
+ */
 public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
+
+    /**
+     * Trouve un chemin entre le nœud de départ et le nœud d'arrivée dans le graphe spécifié en utilisant l'algorithme A*.
+     *
+     * @param graphe Le graphe dans lequel chercher le chemin.
+     * @param depart Le nœud de départ du chemin.
+     * @param arrivee Le nœud d'arrivée du chemin.
+     * @return Une liste de nœuds représentant le chemin du nœud de départ au nœud d'arrivée, ou null si aucun chemin n'est trouvé.
+     */
     @Override
     public List<Noeud<E>> trouverChemin(Graphe<E> graphe, Noeud<E> depart, Noeud<E> arrivee) {
         // Initialisation des structures de données
