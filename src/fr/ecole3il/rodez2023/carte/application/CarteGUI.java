@@ -19,12 +19,8 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 /**
- * @author p.roquart
- * voilà
- * donc
- * c'est la classe finale pour le gui quoi
- * enfin je sais pas
- * moi j'aime pas le java
+ * La classe CarteGUI est une interface graphique pour afficher une carte et interagir avec elle.
+ * Elle permet de sélectionner un point de départ et un point d'arrivée et de trouver le chemin le plus court entre eux en utilisant un algorithme de recherche de chemin.
  */
 public class CarteGUI extends JFrame {
 	private Carte carte;
@@ -32,6 +28,10 @@ public class CarteGUI extends JFrame {
 	private Case caseArrivee;
 	private AlgorithmeChemin algorithme;
 
+	/**
+	 * Construit une nouvelle interface graphique pour la carte spécifiée.
+	 * @param carte La carte à afficher.
+	 */
 	public CarteGUI(Carte carte) {
 		this.carte = carte;
 		this.caseDepart = null;
@@ -92,6 +92,10 @@ public class CarteGUI extends JFrame {
 		});
 	}
 
+	/**
+	 * Dessine la carte sur le composant graphique spécifié.
+	 * @param g Le composant graphique sur lequel dessiner la carte.
+	 */
 	private void dessinerCarte(Graphics2D g) {
 		for (int x = 0; x < carte.getLargeur(); x++) {
 			for (int y = 0; y < carte.getHauteur(); y++) {
@@ -121,6 +125,11 @@ public class CarteGUI extends JFrame {
 		}
 	}
 
+	/**
+	 * Cette méthode trouve le chemin le plus court entre deux points sur la carte.
+	 * Si les points de départ et d'arrivée sont définis, elle utilise l'algorithme de recherche de chemin pour trouver le chemin le plus court.
+	 * Ensuite, elle imprime les coordonnées de chaque case sur le chemin.
+	 */
 	private void trouverChemin() {
 		if (caseDepart != null && caseArrivee != null) {
 			Chemin chemin = AdaptateurAlgorithme.trouverChemin(algorithme, carte, caseDepart.getX(), caseDepart.getY(), caseArrivee.getX(), caseArrivee.getY());
@@ -131,7 +140,12 @@ public class CarteGUI extends JFrame {
 		}
 	}
 
-
+	/**
+	 * Cette méthode génère une image pour une tuile donnée.
+	 * Elle crée une nouvelle image et dessine un rectangle de la couleur correspondant à la tuile.
+	 * @param tuile La tuile pour laquelle générer une image.
+	 * @return Une image représentant la tuile.
+	 */
 	// Les images des tuiles (couleurs)
 	private BufferedImage getTuileImage(Tuile tuile) {
 		// Bon, j'ai pas eu le temps de faire les images
@@ -157,6 +171,11 @@ public class CarteGUI extends JFrame {
 		return image;
 	}
 
+	/**
+	 * La méthode principale pour exécuter l'application.
+	 * Elle génère une carte de test, crée une interface graphique pour cette carte et l'affiche.
+	 * @param args Les arguments de la ligne de commande (non utilisés dans cette application).
+	 */
 	public static void main(String[] args) {
 		// Créer une carte de test
 		/*Tuile[][] tuiles = new Tuile[][] { { Tuile.DESERT, Tuile.MONTAGNES, Tuile.PLAINE },
