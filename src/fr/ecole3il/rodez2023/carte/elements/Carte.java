@@ -42,6 +42,13 @@ public class Carte {
         return tuiles[0].length;
     }
 
+    /**
+     * Récupère une instance de Case à partir des coordonnées spécifiées.
+     *
+     * @param xDepart La coordonnée x de la case à récupérer.
+     * @param yDepart La coordonnée y de la case à récupérer.
+     * @return Une instance de Case correspondant aux coordonnées spécifiées.
+     */
  public Case getCase(int xDepart, int yDepart) {
     Tuile tuile = getTuile(xDepart, yDepart);
     return new Case(tuile, xDepart, yDepart);
