@@ -3,12 +3,12 @@
 Le projet est une application de cartographie qui génère des cartes aléatoires et trouve le chemin le plus court entre deux points sur la carte. Les cartes sont générées à partir de tuiles qui représentent différents types de terrains, chacun ayant une pénalité de déplacement associée.  
 
 Les éléments clés du projet sont :  
-Génération de la carte : La classe GenerateurCarte est utilisée pour générer des cartes aléatoires. Chaque carte est une grille bidimensionnelle de tuiles, où chaque tuile représente un type de terrain (désert, montagnes, plaine, forêt) avec une pénalité de déplacement associée.  
-Représentation de la carte : La classe Carte représente une carte, qui est une grille bidimensionnelle de tuiles. La classe Case représente une case sur la carte, qui est caractérisée par une tuile et des coordonnées (x, y).  
-Représentation du graphe : La classe Graphe représente un graphe, qui est utilisé pour représenter la carte sous une forme qui peut être utilisée par les algorithmes de recherche de chemin. Chaque nœud du graphe est une case sur la carte.  
-Recherche de chemin : Les classes AlgorithmeDijkstra et AlgorithmeAEtoile implémentent les algorithmes de Dijkstra et A* pour trouver le chemin le plus court entre deux points sur la carte. Ces classes implémentent l'interface AlgorithmeChemin, qui définit une méthode trouverChemin.  
-Adaptation de l'algorithme : La classe AdaptateurAlgorithme est utilisée pour adapter les algorithmes de recherche de chemin à la représentation de la carte. Elle fournit une méthode trouverChemin qui prend une carte et des coordonnées de départ et d'arrivée, et renvoie un chemin.  
-Interface utilisateur : Les classes ExempleCLI et CarteGUI fournissent une interface utilisateur en ligne de commande et graphique, respectivement, pour interagir avec l'application. L'utilisateur peut générer une carte, sélectionner des points de départ et d'arrivée, et trouver le chemin le plus court entre ces points.
+- Génération de la carte : La classe GenerateurCarte est utilisée pour générer des cartes aléatoires. Chaque carte est une grille bidimensionnelle de tuiles, où chaque tuile représente un type de terrain (désert, montagnes, plaine, forêt) avec une pénalité de déplacement associée.  
+- Représentation de la carte : La classe Carte représente une carte, qui est une grille bidimensionnelle de tuiles. La classe Case représente une case sur la carte, qui est caractérisée par une tuile et des coordonnées (x, y).  
+- Représentation du graphe : La classe Graphe représente un graphe, qui est utilisé pour représenter la carte sous une forme qui peut être utilisée par les algorithmes de recherche de chemin. Chaque nœud du graphe est une case sur la carte.  
+- Recherche de chemin : Les classes AlgorithmeDijkstra et AlgorithmeAEtoile implémentent les algorithmes de Dijkstra et A* pour trouver le chemin le plus court entre deux points sur la carte. Ces classes implémentent l'interface AlgorithmeChemin, qui définit une méthode trouverChemin.  
+- Adaptation de l'algorithme : La classe AdaptateurAlgorithme est utilisée pour adapter les algorithmes de recherche de chemin à la représentation de la carte. Elle fournit une méthode trouverChemin qui prend une carte et des coordonnées de départ et d'arrivée, et renvoie un chemin.  
+- Interface utilisateur : Les classes ExempleCLI et CarteGUI fournissent une interface utilisateur en ligne de commande et graphique, respectivement, pour interagir avec l'application. L'utilisateur peut générer une carte, sélectionner des points de départ et d'arrivée, et trouver le chemin le plus court entre ces points.
 
 
 # Les réponses aux diverses questions du sujet s'il y en a ;
