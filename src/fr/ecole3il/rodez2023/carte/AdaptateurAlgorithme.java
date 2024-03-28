@@ -84,4 +84,18 @@ public static Chemin trouverChemin(AlgorithmeChemin<Case> algorithme, Carte cart
         }
         return chemin;
     }
+
+
+
+    public static double getCalculerCout(Case from, Case to) {
+        return calculerCout(from, to);
+    }
+
+    public static void getAjouterAretesVoisines(Graphe<Case> graphe, Noeud<Case> noeud, int x, int y, int largeur, int hauteur) {
+        ajouterAretesVoisines(graphe, noeud, x, y, largeur, hauteur);
+    }
+
+    public static Graphe<Case> getCreerGraphe(Carte carte) {
+        return creerGraphe(carte);
+    }
 }
