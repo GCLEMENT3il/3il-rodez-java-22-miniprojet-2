@@ -1,3 +1,3 @@
-Vincent FAURE : Ma aider a débug le code a la fin
-Rayyan OUTALEB
-Abdou SYLLA
+- Vincent Faure m'a aidé à déboguer le code à la fin.
+- Rayyan OUTALEB m'a aidé à faire les tests.
+- Abdou SYLLA
